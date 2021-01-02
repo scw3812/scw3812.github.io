@@ -25,7 +25,8 @@ tags: [개발]
 ![repo 생성](https://user-images.githubusercontent.com/49465188/103454172-96da9180-4d24-11eb-8e8e-d8b15559784d.png){: width="700"}{: .mx-auto.d-block :}
 
 우선 **Github Repository**를 하나 만들어야 합니다. 레포 이름은 무엇으로 하든 상관없이 Github Pages로 호스팅 할 수 있지만 저는 편의를 위해 바로 
-호스팅 되는 yourname.github.io(yourname에 자신의 Github 아이디를 넣으면 됩니다)로 만들었습니다.
+호스팅 되는 yourname.  
+github.io(yourname에 자신의 Github 아이디를 넣으면 됩니다)로 만들었습니다.
 
 ## 2. Jekyll 테마 찾기
 
