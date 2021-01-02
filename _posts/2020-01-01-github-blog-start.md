@@ -23,7 +23,22 @@ tags: [개발]
 
 ## 1. Github Repository 만들기
 
-![repo 생성](https://user-images.githubusercontent.com/49465188/103454172-96da9180-4d24-11eb-8e8e-d8b15559784d.png){: width="500"}{: .mx-auto.d-block :}
+![repo 생성](https://user-images.githubusercontent.com/49465188/103454172-96da9180-4d24-11eb-8e8e-d8b15559784d.png){: width="700"}{: .mx-auto.d-block :}
 
 우선 Github Repository를 하나 만들어야 합니다. 레포 이름은 무엇으로 하든 상관없이 Github Pages로 호스팅 할 수 있지만 저는 편의를 위해 바로 
 호스팅 되는 [yourname].github.io로 만들었습니다.
+
+## 2. Jekyll 테마 찾기
+
+![Jekyll 테마](https://user-images.githubusercontent.com/49465188/103454331-38161780-4d26-11eb-914c-cf7131ad122a.png){: width="700"}{: .mx-auto.d-block :}
+
+먼저 원하는 Jekyll 테마를 찾아야 합니다.  
+Github에 공개되어 있는 [Jekyll 테마](https://github.com/topics/jekyll-theme)들을 보면서 원하시는 것을 고르시면 됩니다. 저는 사용하기 간단해
+보이고 제가 보기에 예쁘다고 생각되었던 beautiful-jekyll을 선택하였습니다.
+
+## 3. Jekyll 테마 적용하기
+
+Jekyll 테마를 적용하는 방법은 여러가지가 있는데 제가 사용해본 두 가지 방법을 소개해보려고 합니다.
+
+### jekyll remote theme 사용하기
+
