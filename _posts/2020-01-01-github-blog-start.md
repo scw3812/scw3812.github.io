@@ -48,3 +48,12 @@ Jekyll 테마를 적용하는 방법은 여러가지가 있는데 제가 사용�
 
 {: .box-note}
 remote_theme : daattali / beautiful-jekyll
+
+이는 Github 페이지의 remote_theme를 설정하는 코드이며, `owner/repository`의 형식으로 이루어집니다.
+이 다음에는 만약 url과 baseurl 값이 있다면 이를 설정해 주어야 합니다. url의 경우에는 Github 페이지의 url,
+baseurl은 빈 문자열로 설정합니다.
+
+
+{: .box-note}
+url : "https://yourname.github.io:
+baseurl: ""
