@@ -44,5 +44,5 @@ Jekyll 테마를 적용하는 방법은 여러가지가 있는데 제가 사용�
 우선 선택한 테마의 `_config.yml` 파일을 복사해서 생성한 레포지토리에 같은 파일을 만듭니다. 이 파일은 Jekyll의 환경설정 파일이라고 생각하면 됩니다.  
 
 그리고 생성된 파일의 밑에 아래와 같은 코드를 추가해주시면 됩니다.
-{: .box-note}
-remote_theme : daattali / beautiful-jekyll
+
+remote_theme : daattali / beautiful-jekyll{: .box-note}
