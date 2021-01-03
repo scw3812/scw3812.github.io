@@ -74,7 +74,7 @@ public class DataManager {
 
 ### 멀티스레드에서 안전한 싱글톤 예제 
 
-1. Lazy initialization
+1.Lazy initialization
 
 {% highlight javascript linenos %}
 public class ThreadSafeLazyInitialization{
@@ -96,7 +96,7 @@ public class ThreadSafeLazyInitialization{
 private static으로 인스턴스 변수를 만들고 private 생성자로 외부에서 생성을 막습니다. 그리고 synchronized 키워드를 사용해서 thread-safe하게 만듭니다.
 하지만 synchronized 특성상 비교적 큰 성능저하가 발생하므로 권장하지 않는 방법입니다.
 
-2. Lazy initialization + Double-checked locking
+2.Lazy initialization + Double-checked locking
 
 {% highlight javascript linenos %}
 public class ThreadSafeLazyInitialization {
@@ -119,16 +119,17 @@ public class ThreadSafeLazyInitialization {
 }
 {% endhighlight %}
 
-getInstance()에 synchronized를 사용하는 것이 아니라 첫 번째 if문으로 인스턴스의 존재여부를 체크하고 두 번째 if문에서 다시 한번 체크할 때 동기화 시켜서 인스턴스를 생성하므로 thread-safe하면서도 처음 생성 이후에 synchonized 블럭을 타지 않기 때문에 성능저하를 완화했다.
+getInstance()에 synchronized를 사용하는 것이 아니라 첫 번째 if문으로 인스턴스의 존재여부를 체크하고 두 번째 if문에서 다시 한번 체크할 때 동기화 시켜서 인스턴스를 생성하므로 thread-safe하면서도 처음 생성 이후에 synchonized 블럭을 타지 않기 때문에 성능저하가 완화됩니다.
 
-그러나 완벽한 방법은 아니다.
+그러나 여전히 완벽한 방법은 아닙니다.
 
-3. Initialization on demand holder idiom (holder에 의한 초기화)
+3.Initialization on demand holder idiom (holder에 의한 초기화)
 
 클래스안에 클래스(Holder)를 두어 JVM의 Class loader 매커니즘과 Class가 로드되는 시점을 이용한 방법
 
 {% highlight javascript linenos %}
 public class Something {
+
     private Something() {
     }
  
@@ -142,11 +143,9 @@ public class Something {
 }
 {% endhighlight %}
 
-개발자가 직접 동기화 문제에 대해 코드를 작성하고 문제를 회피하려 한다면 프로그램 구조가 그 만큼 복잡해지고 비용 문제가 생길 수 있고 특히 정확하지 못한 경우가 많다.(100%가 아닐수 있음)
+개발자가 직접 동기화 문제에 대해 코드를 작성하고 문제를 회피하려 한다면 프로그램 구조가 복잡해지며, 비용 문제가 생길 수 있고, 특히 정확하지 못한 경우가 많습니다.
+그런데 이 방법은 JVM의 클래스 초기화 과정에서 보장되는 원자적 특성을 이용하여 싱글턴의 초기화 문제에 대한 책임을 JVM에 떠넘깁니다.
+holder안에 선언된 instance가 static이기 때문에 클래스 로딩시점에 한번만 호출될 것이며 final을 사용해 다시 값이 할당되지 않도록 만든 방법입니다. 
 
-그런데 이 방법은 JVM의 클래스 초기화 과정에서 보장되는 원자적 특성을 이용하여 싱글턴의 초기화 문제에 대한 책임을 JVM에 떠넘긴다.
-
-holder안에 선언된 instance가 static이기 때문에 클래스 로딩시점에 한번만 호출될 것이며 final을 사용해 다시 값이 할당되지 않도록 만든 방법.
-
-가장 많이 사용하고 일반적인 Singleton 클래스 사용 방법이다.
+가장 많이 사용하고 일반적인 Singleton 클래스 사용 방법입니다.
 
