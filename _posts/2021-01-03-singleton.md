@@ -27,12 +27,8 @@ private으로 선언하고, getInstance() 메서드로 객체를 반환하는 �
 
 ## 유의할 점
 
-싱글톤 인스턴스가 너무 많은 일을 하거나 너무 많은 데이터를 공유하게 되면 각 클래스 간에 결합도가 높아져 '개방-폐쇄 원칙'을
+싱글톤 인스턴스가 너무 많은 일을 하거나 너무 많은 데이터를 공유하게 되면 각 클래스 간에 결합도가 높아져 ['개방-폐쇄 원칙'](https://ko.wikipedia.org/wiki/%EA%B0%9C%EB%B0%A9-%ED%8F%90%EC%87%84_%EC%9B%90%EC%B9%99)을
 위배하게 됩니다.  
-개방-폐쇄 원칙이란 
->"소프트웨어 개체(클래스, 모듈, 함수 등등)는 확장에 대해 열려 있어야 하고, 수정에 대해서는 닫혀 있어야 한다"
-
-는 객체 지향 설계의 원칙입니다.  
 또, 멀티쓰레드 환경에서는 동기화처리를 하지 않으면 여러 객체가 생성될 수 있고, 그에 따라 공유된 데이터 값이 달라지는 문제가
 발생할 수 있습니다.  
 
@@ -77,3 +73,80 @@ public class DataManager {
 또, 만약 액티비티 라이프사이클에 영향받지 않는 싱글톤 클래스를 만들고 싶다면 activity 대신 Application의 Context를 넘겨주면 됩니다.
 
 ### 멀티스레드에서 안전한 싱글톤 예제 
+
+1. Lazy initialization
+
+{% highlight javascript linenos %}
+public class ThreadSafeLazyInitialization{
+ 
+    private static ThreadSafeLazyInitialization instance;
+ 
+    private ThreadSafeLazyInitialization(){}
+     
+    public static synchronized ThreadSafeLazyInitialization getInstance(){
+        if(instance == null){
+            instance = new ThreadSafeLazyInitialization();
+        }
+        return instance;
+    }
+    
+}
+{% endhighlight %}
+
+private static으로 인스턴스 변수를 만들고 private 생성자로 외부에서 생성을 막습니다. 그리고 synchronized 키워드를 사용해서 thread-safe하게 만듭니다.
+하지만 synchronized 특성상 비교적 큰 성능저하가 발생하므로 권장하지 않는 방법입니다.
+
+2. Lazy initialization + Double-checked locking
+
+{% highlight javascript linenos %}
+public class ThreadSafeLazyInitialization {
+ 
+    private volatile static ThreadSafeLazyInitialization instance;
+ 
+    private ThreadSafeLazyInitialization(){}
+     
+    public static ThreadSafeLazyInitialization getInstance(){
+        
+        if(instance == null){
+            synchronized (ThreadSafeLazyInitialization.class) {
+                if(instance == null)
+                    instance = new ThreadSafeLazyInitialization();
+            }
+ 
+        }
+        return instance;
+    }
+}
+{% endhighlight %}
+
+getInstance()에 synchronized를 사용하는 것이 아니라 첫 번째 if문으로 인스턴스의 존재여부를 체크하고 두 번째 if문에서 다시 한번 체크할 때 동기화 시켜서 인스턴스를 생성하므로 thread-safe하면서도 처음 생성 이후에 synchonized 블럭을 타지 않기 때문에 성능저하를 완화했다.
+
+그러나 완벽한 방법은 아니다.
+
+3. Initialization on demand holder idiom (holder에 의한 초기화)
+
+클래스안에 클래스(Holder)를 두어 JVM의 Class loader 매커니즘과 Class가 로드되는 시점을 이용한 방법
+
+{% highlight javascript linenos %}
+public class Something {
+    private Something() {
+    }
+ 
+    private static class LazyHolder {
+        public static final Something INSTANCE = new Something();
+    }
+ 
+    public static Something getInstance() {
+        return LazyHolder.INSTANCE;
+    }
+}
+{% endhighlight %}
+
+개발자가 직접 동기화 문제에 대해 코드를 작성하고 문제를 회피하려 한다면 프로그램 구조가 그 만큼 복잡해지고 비용 문제가 생길 수 있고 특히 정확하지 못한 경우가 많다.(100%가 아닐수 있음)
+
+그런데 이 방법은 JVM의 클래스 초기화 과정에서 보장되는 원자적 특성을 이용하여 싱글턴의 초기화 문제에 대한 책임을 JVM에 떠넘긴다.
+
+holder안에 선언된 instance가 static이기 때문에 클래스 로딩시점에 한번만 호출될 것이며 final을 사용해 다시 값이 할당되지 않도록 만든 방법.
+
+가장 많이 사용하고 일반적인 Singleton 클래스 사용 방법이다.
+
