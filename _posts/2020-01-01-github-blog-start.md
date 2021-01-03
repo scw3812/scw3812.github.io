@@ -53,7 +53,8 @@ remote_theme : daattali / beautiful-jekyll
 이 다음에는 만약 url과 baseurl 값이 있다면 이를 설정해 주어야 합니다. url의 경우에는 Github 페이지의 url,
 baseurl은 빈 문자열로 설정합니다.
 
-
 {: .box-note}
-url : "https://yourname.github.io:
+url : "https://yourname.github.io  
 baseurl: ""
+
+그리고 이외의 설정은 원하시는 값으로 적절히 설정하시면 됩니다.
