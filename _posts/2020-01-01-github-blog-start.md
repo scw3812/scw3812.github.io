@@ -109,6 +109,6 @@ Jekyll remote theme를 사용하면 앞서 봤던 것처럼 아주 간단하게 
 막상 이렇게 다 만들고 나니 뿌듯하고 뭔가 개발 공부 의욕이 생깁니다. 블로그 만들기를 잘했다는 생각이 드네요.
 
 {: .box-note}
-**참고**    
-- https://dreamgonfly.github.io/blog/jekyll-remote-theme/
-- https://github.com/daattali/beautiful-jekyll
+**참고**  
+https://dreamgonfly.github.io/blog/jekyll-remote-theme/  
+https://github.com/daattali/beautiful-jekyll
