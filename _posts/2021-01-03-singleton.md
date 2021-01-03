@@ -152,3 +152,9 @@ holder안에 선언된 instance가 static이기 때문에 클래스 로딩시점
 
 지금까지는 싱글톤 패턴이 정확히 어떤 것인지 잘 알지 못하고 그냥 써왔습니다. 회사 일로 공부하게 된 것이지만 이번 기회에 싱글톤 패턴에
 대해 많은 공부를 할 수 있었고, 앞으로 더 정확하고 적절하게 싱글톤 패턴을 사용할 수 있을 것 같습니다.
+
+{: .box-note}
+**참고**  
+https://limkydev.tistory.com/37  
+https://fsd-jinss.tistory.com/140  
+https://jeong-pro.tistory.com/86
