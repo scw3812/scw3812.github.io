@@ -54,7 +54,13 @@ remote_theme : daattali / beautiful-jekyll
 baseurl은 빈 문자열로 설정합니다.
 
 {: .box-note}
-url : "https://yourname.github.io  
+url : "https://yourname.github.io"  
 baseurl: ""
 
-그리고 이외의 설정은 원하시는 값으로 적절히 설정하시면 됩니다.
+그리고 이외의 설정은 원하시는 값으로 적절히 설정하시면 됩니다.  
+
+다음은 아까 `_config.yml`을 복사해 온 것처럼 이번에는 `index.html` 또는 `index.md` 파일을 복사해 옵니다.
+이 파일은 보통 블로그의 홈페이지를 나타내는 파일입니다. 이외에도 `posts.md` 등 테마에 따라 필요한 파일이 더 있을
+수도 있습니다. 만약 블로그가 제대로 나오지 않는다면 필요한 파일들을 확인해주세요.
+
+### 수동으로 설정하기
