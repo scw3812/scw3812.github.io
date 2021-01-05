@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 코알라 테스트 프로젝트 01-리액트를 시작하다 
+title: c0ala 프로젝트 01-리액트를 시작하다 
 subtitle: 개린이의 첫 웹 풀스택 프로젝트 도전기
-thumbnail-img: https://user-images.githubusercontent.com/49465188/103658802-0bc0fc00-4faf-11eb-835e-de8fa599a4d3.png
+thumbnail-img: https://cdn.evilmartians.com/front/posts/optimizing-react-virtual-dom-explained/cover-a1d5b40.png
 tags: [개발, Node.js, React.js, AWS]
 ---
 
