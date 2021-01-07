@@ -12,7 +12,7 @@ tags: [개발, Node.js, React.js, AWS]
 
 이 프로젝트는 요즘 유행하는 MBTI 테스트 같은 것이다. 간단한 테스트를 통해 유형을 분류하고 그에 맞는 취미 클래스를
 추천해주는 프로젝트이다.  
-[](https://c0alatest.com) 이 링크로 들어가면 테스트를 해볼 수 있다.  
+[https://c0alatest.com](https://c0alatest.com) 이 링크로 들어가면 테스트를 해볼 수 있다.  
 
 ## 시작하며
 
